@@ -4,6 +4,8 @@ import { prettyJSON } from "hono/pretty-json";
 import { KVNamespace } from "@cloudflare/workers-types";
 import { z } from "zod";
 
+import indexHtml from './public/index.html'
+
 type Bindings = {
   MY_BUCKET: KVNamespace;
   HOST_URL: string;
@@ -23,7 +25,7 @@ app.use("*", cors());
 app.notFound((c) => c.json({ message: "Not Found", ok: false }, 404));
 
 app.get("/", (c) =>
-  c.redirect("https://github.com/alexraskin/edge-snip")
+  c.html(indexHtml)
 );
 
 app.post("/", async (c: Context) => {

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EdgeSnip - URL Shortener built with Cloudflare Workers">
+    <meta property="og:title" content="EdgeSnip URL Shortener">
+    <meta property="og:url" content="https://edgesnip.dev">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="EdgeSnip - URL Shortener built with Cloudflare Workers">
+    <meta property="og:image" content="https://cdn.edgesnip.dev/share.png">
+    <link rel="shortcut icon" type="image/x-icon" href="https://cdn.edgesnip.dev/favicon.ico">
+    <title>EdgeSnip - URL Shortener</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        input[type="url"], .copy-btn {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            word-wrap: break-word;
+        }
+
+        .copy-btn {
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .copy-btn:hover {
+            background-color: #218838;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>EdgeSnip - URL Shortener</h1>
+    <input type="url" id="urlInput" placeholder="Enter your URL here" required>
+    <button id="shortenBtn">Snip URL</button>
+    <div id="result" class="hidden">
+        Short URL: <span id="shortUrl"></span>
+        <button id="copyBtn" class="copy-btn">Copy</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('shortenBtn').onclick = function() {
+        let longUrl = document.getElementById('urlInput').value;
+        if (longUrl) {
+            fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ url: longUrl }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                var resultElement = document.getElementById('result');
+                var shortUrlElement = document.getElementById('shortUrl');
+                shortUrlElement.textContent = data.url;
+                resultElement.classList.remove('hidden');
+
+                var copyBtn = document.getElementById('copyBtn');
+                copyBtn.onclick = function() {
+                    navigator.clipboard.writeText(data.url).then(function() {
+                        alert('Short URL copied to clipboard!');
+                    }).catch(function(error) {
+                        alert('Error copying text: ', error);
+                    });
+                };
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('result').textContent = 'An error occurred. Please try again.';
+            });
+        } else {
+            document.getElementById('result').textContent = 'Please enter a URL.';
+        }
+    };
+</script>
+</body>
+</html>
