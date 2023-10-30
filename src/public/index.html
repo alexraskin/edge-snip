@@ -69,6 +69,25 @@
         .hidden {
             display: none;
         }
+        footer {
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #f2f2f2;
+            color: #666;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -82,6 +101,9 @@
         <button id="copyBtn" class="copy-btn">Copy</button>
     </div>
 </div>
+<footer>
+  View the <a href="https://github.com/alexraskin/edge-snip" target="_blank">source code</a> on GitHub.
+</footer>
 
 <script>
     document.getElementById('shortenBtn').onclick = function() {
