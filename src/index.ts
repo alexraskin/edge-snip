@@ -23,11 +23,7 @@ app.use("*", cors());
 app.notFound((c) => c.json({ message: "Not Found", ok: false }, 404));
 
 app.get("/", (c) =>
-  c.json({
-    message:
-      'Send a POST request to this endpoint with a JSON body containing a "url" property with a valid URL.',
-    ok: true,
-  }),
+  c.redirect("https://github.com/alexraskin/edge-snip")
 );
 
 app.post("/", async (c: Context) => {
