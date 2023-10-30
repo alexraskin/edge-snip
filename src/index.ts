@@ -43,7 +43,7 @@ app.post("/", async (c: Context) => {
     existing = await c.env.SHORTENER_KV.get(slug);
   }
   await c.env.SHORTENER_KV.put(slug, longLink);
-  return c.json({ url: `${c.env.HOST_URL}/${slug}` });
+  return c.json({ url: `${c.req.url}${slug}` });
 });
 
 app.get("/:slug", async (c: Context) => {
