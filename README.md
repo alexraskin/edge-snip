@@ -12,6 +12,8 @@ Send a POST request to `https://edgesnip.dev/` with the following body
 }
 ```
 
+Or visit [https://edgesnip.dev/](https://edgesnip.dev/) to see the UI
+
 ## Installation
 
 You will need to create a `wrangler.toml` file in the root. [docs](https://developers.cloudflare.com/workers/wrangler/configuration/)
