@@ -1,6 +1,6 @@
 # EdgeSnip - URL Shortener
 
-EdgeSnip is URL Shortener built with [Cloudflare Workers](https://workers.cloudflare.com/)
+EdgeSnip - URL Shortener built with [Cloudflare Workers](https://workers.cloudflare.com/)
 
 ## See it in action
 
