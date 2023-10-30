@@ -118,12 +118,15 @@
             })
             .then(response => response.json())
             .then(data => {
-                var resultElement = document.getElementById('result');
-                var shortUrlElement = document.getElementById('shortUrl');
+                let resultElement = document.getElementById('result');
+                let shortUrlElement = document.getElementById('shortUrl');
+                let linkElement = document.createElement('a');
+                linkElement.setAttribute('href', data.url);
+                linkElement.setAttribute('target', '_blank');
                 shortUrlElement.textContent = data.url;
                 resultElement.classList.remove('hidden');
 
-                var copyBtn = document.getElementById('copyBtn');
+                let copyBtn = document.getElementById('copyBtn');
                 copyBtn.onclick = function() {
                     navigator.clipboard.writeText(data.url).then(function() {
                         alert('Short URL copied to clipboard!');
