@@ -1,5 +1,7 @@
 # EdgeSnip - URL Shortener
 
+[![Image from Gyazo](https://i.gyazo.com/22139039fd2777c89c0446eda8fce993.png)](https://gyazo.com/22139039fd2777c89c0446eda8fce993)
+
 EdgeSnip - URL Shortener built with [Cloudflare Workers](https://workers.cloudflare.com/)
 
 ## See it in action
