@@ -6,7 +6,7 @@ EdgeSnip - URL Shortener built with [Cloudflare Workers](https://workers.cloudfl
 
 ## See it in action
 
-Send a POST request to `https://edgesnip.dev/` with the following body
+Send a POST request to `https://i.00z.sh/` with the following body
 
 ```json
 {
@@ -14,7 +14,7 @@ Send a POST request to `https://edgesnip.dev/` with the following body
 }
 ```
 
-Or visit [https://edgesnip.dev/](https://edgesnip.dev/) to see the UI
+Or visit [https://i.00z.sh/](https://i.00z.sh/) to see the UI
 
 _frontend is not my strong suit lol_
 
